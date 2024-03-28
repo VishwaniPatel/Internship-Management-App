@@ -11,7 +11,7 @@ const InternshipBatchList = ({navigation}) => {
     };
     function pressHandler() {
       navigation.navigate('InternBatchDetails', {
-        batchId: batch.id,
+        batchId: batch.item.id,
       });
     }
     return (

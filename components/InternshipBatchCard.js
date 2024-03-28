@@ -5,9 +5,11 @@ const InternshipBatchCard = ({batchName, startdate, enddate, onPress}) => {
   return (
     <View style={styles.card}>
       <Pressable android_ripple={{color: '#ccc'}} onPress={onPress}>
-        <Text style={styles.batchName}>{batchName}</Text>
-        <Text>Start Date: {startdate}</Text>
-        <Text>End Date: {enddate}</Text>
+        <View style={styles.innerContainer}>
+          <Text style={styles.batchName}>{batchName}</Text>
+          <Text>Start Date: {startdate}</Text>
+          <Text>End Date: {enddate}</Text>
+        </View>
       </Pressable>
     </View>
   );
@@ -17,7 +19,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
     borderRadius: 8,
-    padding: 16,
+    marginHorizontal: 16,
     marginBottom: 16,
     shadowColor: '#000',
     shadowOffset: {
@@ -27,6 +29,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+  innerContainer: {
+    padding: 16,
   },
   batchName: {
     color: '#005ba9',
