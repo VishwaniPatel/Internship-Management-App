@@ -7,16 +7,16 @@ const Dashboard = () => {
   const [timeOfDay, setTimeOfDay] = useState('');
   const navigation = useNavigation();
   const DATA = [
-    {id: '1', title: 'InterBatch'},
-    {id: '2', title: 'Mentors'},
+    {id: '1', title: 'InterBatch', path: 'InternsBatch'},
+    {id: '2', title: 'Mentors', path: 'mentors'},
     {id: '3', title: 'Roadmap'},
     {id: '4', title: 'Training Tracker'},
   ];
-  function pressHandler() {
-    navigation.navigate('InternsBatch');
+  function pressHandler(path) {
+    navigation.navigate(path);
   }
   const renderItem = ({item}) => (
-    <DashboardCard title={item.title} onPress={pressHandler} />
+    <DashboardCard title={item.title} onPress={() => pressHandler(item.path)} />
   );
 
   useEffect(() => {

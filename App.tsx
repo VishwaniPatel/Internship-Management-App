@@ -8,6 +8,8 @@ import InternshipBatchDetails from './screens/InternshipBatchDetails';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AddBatchIntern from './screens/AddBatchIntern';
 import Dashboard from './screens/Dashboard';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import Mentors from './screens/Mentors';
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
 function ManageBatch() {
@@ -27,29 +29,36 @@ export default function App() {
   return (
     <>
       <StatusBar style="dark" />
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="ManageBatch"
-            component={ManageBatch}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="InternsBatch"
-            component={InternsBatch}
-            options={{title: 'Internship Batch'}}></Stack.Screen>
-          <Stack.Screen
-            name="AddBatchIntern"
-            component={AddBatchIntern}></Stack.Screen>
-          {/* <Stack.Screen
+      <SafeAreaView style={styles.container}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="ManageBatch"
+              component={ManageBatch}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="InternsBatch"
+              component={InternsBatch}
+              options={{title: 'Internship Batch'}}></Stack.Screen>
+            <Stack.Screen name="mentors" component={Mentors} />
+            <Stack.Screen
+              name="AddBatchIntern"
+              component={AddBatchIntern}></Stack.Screen>
+            {/* <Stack.Screen
             name="InternBatchDetails"
             component={InternshipBatchDetails}
             options={{title: 'InternshipBatch Details'}}
           /> */}
-        </Stack.Navigator>
-      </NavigationContainer>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
     </>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
