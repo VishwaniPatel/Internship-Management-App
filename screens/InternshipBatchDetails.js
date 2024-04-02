@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {batchIntern} from '../data/InternsData';
 import {Table, Row, Rows} from 'react-native-table-component';
+
 const InternshipBatchDetails = ({route}) => {
   const [internList, setInternList] = useState([]);
   const batchId = route.params.batchId;
@@ -15,28 +16,24 @@ const InternshipBatchDetails = ({route}) => {
   useEffect(() => {
     getInternList();
   }, [batchId, batchIntern]);
+
   return (
     <View style={styles.container}>
-      <Table borderStyle={{borderWidth: 4, borderColor: 'teal'}}>
+      <Table borderStyle={{borderWidth: 1, borderColor: '#dee2e6'}}>
         <Row
           data={['Name', 'Email', 'Domain']}
           style={styles.head}
           textStyle={styles.headText}
         />
         {internList.length > 0 ? (
-          internList.map(intern => (
-            // console.log(intern),
-            <Rows data={[intern.firstName, intern.email, intern.domain]}></Rows>
-          ))
+          <Rows
+            data={internList.map(intern => [
+              intern.firstName,
+              intern.email,
+              intern.domain,
+            ])}
+            textStyle={styles.text}></Rows>
         ) : (
-          // <Rows
-          //   data={[
-          //     internList.map(intern => intern.firstName),
-          //     internList.map(intern => intern.email),
-          //     internList.map(intern => intern.domain),
-          //   ]}
-          //   textStyle={styles.text}
-          // />
           <Rows>No record found</Rows>
         )}
       </Table>
@@ -50,15 +47,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     backgroundColor: '#fff',
   },
-  head: {height: 44, backgroundColor: 'darkblue'},
+  head: {height: 32, backgroundColor: '#f1f3f5'},
   headText: {
-    fontSize: 20,
+    fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: 'white',
+    // color: 'white',
   },
-  text: {margin: 6, fontSize: 16, fontWeight: 'bold', textAlign: 'center'},
+  text: {margin: 6, fontSize: 12, fontWeight: '400', textAlign: 'center'},
 });

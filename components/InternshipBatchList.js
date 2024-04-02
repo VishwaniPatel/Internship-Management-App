@@ -20,6 +20,7 @@ const InternshipBatchList = ({navigation}) => {
         startdate={formatDateString(batch.item.startdate)}
         enddate={formatDateString(batch.item.enddate)}
         onPress={pressHandler}
+        navigation={navigation}
       />
     );
   }
